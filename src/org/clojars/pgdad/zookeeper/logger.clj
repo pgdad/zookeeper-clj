@@ -1,4 +1,4 @@
-(ns zookeeper.logger
+(ns org.clojars.pgdad.zookeeper.logger
   (:import [java.util.logging Level LogManager]))
 
 (defn root-logger []

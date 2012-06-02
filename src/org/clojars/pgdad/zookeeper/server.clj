@@ -1,9 +1,9 @@
-(ns zookeeper.server
+(ns org.clojars.pgdad.zookeeper.server
   (:import (org.apache.zookeeper.server ZooKeeperServerMain
                                         ServerConfig)))
 
 (defn server-config
-  ([filename]
+  ([^String filename]
      (doto (ServerConfig.)
          (.parse filename))))
 

@@ -1,4 +1,4 @@
-(ns zookeeper.internal
+(ns org.clojars.pgdad.zookeeper.internal
   (:import (org.apache.zookeeper CreateMode
                                  Watcher
                                  ZooDefs$Perms
@@ -50,7 +50,7 @@
 ;; Watcher
 
 (defn make-watcher
-  ([handler]
+  ^Watcher ([handler]
      (reify Watcher
        (process [this event]
          (handler (event-to-map event))))))
@@ -76,7 +76,7 @@
                    :stat (stat-to-map stat)})))))
 
 (defn children-callback
-  ([handler]
+  ^ChildrenCallback ([handler]
      (reify AsyncCallback$Children2Callback
        (processResult [this return-code path context children stat]
          (handler {:return-code return-code

@@ -1,4 +1,4 @@
-(ns zookeeper.util
+(ns org.clojars.pgdad.zookeeper.util
   (:import (org.apache.commons.codec.digest DigestUtils)
            (org.apache.commons.codec.binary Base64)))
 

@@ -1,4 +1,4 @@
-(ns zookeeper.data
+(ns org.clojars.pgdad.zookeeper.data
   (:import (java.nio ByteBuffer)))
 
 (def ^:dynamic *charset* "UTF-8")

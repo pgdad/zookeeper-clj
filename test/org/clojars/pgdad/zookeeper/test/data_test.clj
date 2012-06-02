@@ -1,5 +1,5 @@
-(ns zookeeper.test.data_test
-  (:use [zookeeper.data]
+(ns org.clojars.pgdad.zookeeper.test.data_test
+  (:use [org.clojars.pgdad.zookeeper.data]
         [clojure.test]))
 
 (deftest to-from-bytes

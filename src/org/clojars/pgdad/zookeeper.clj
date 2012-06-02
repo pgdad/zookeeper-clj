@@ -1,4 +1,4 @@
-(ns zookeeper
+(ns org.clojars.pgdad.zookeeper
   "
     Zookeeper-clj is a Clojure DSL for <a href=\"http://zookeeper.apache.org/\">Apache ZooKeeper</a>, which \"<i>is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services.</i>\"
 
@@ -15,8 +15,8 @@ Out of the box ZooKeeper provides name service, configuration, and group members
            (java.util.concurrent CountDownLatch)
            (java.util Arrays))
   (:require [clojure.string :as s]
-            [zookeeper.internal :as zi]
-            [zookeeper.util :as util]))
+            [org.clojars.pgdad.zookeeper.internal :as zi]
+            [org.clojars.pgdad.zookeeper.util :as util]))
 
 
 ;; connection functions
@@ -138,7 +138,7 @@ Out of the box ZooKeeper provides name service, configuration, and group members
     (create client \"/baz/3\")
 
 "
-  ([client path & {:keys [data acl persistent? sequential? context callback async?]
+  ([^ZooKeeper client path & {:keys [data acl persistent? sequential? context callback async?]
                    :or {persistent? false
                         sequential? false
                         acl (zi/acls :open-acl-unsafe)
@@ -223,7 +223,7 @@ Out of the box ZooKeeper provides name service, configuration, and group members
            (zi/try*
             (seq (.getChildren client path
                                (if watcher (zi/make-watcher watcher) watch?)
-                               (zi/children-callback (zi/promise-callback prom callback)) context))
+                               (zi/children-callback (zi/promise-callback prom callback))context))
             (catch KeeperException e (throw e)))
            prom)
          (zi/try*
@@ -449,7 +449,7 @@ Out of the box ZooKeeper provides name service, configuration, and group members
   "Add auth info to connection."
   ([^ZooKeeper client scheme auth]
      (zi/try*
-      (.addAuthInfo client scheme (if (string? auth) (.getBytes auth "UTF-8") auth))
+      (.addAuthInfo client scheme (if (string? auth) (.getBytes ^String auth "UTF-8") auth))
       (catch KeeperException e (throw e)))))
 
 (defn acl-id

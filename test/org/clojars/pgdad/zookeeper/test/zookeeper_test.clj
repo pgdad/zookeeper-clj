@@ -1,5 +1,5 @@
-(ns zookeeper.test.zookeeper-test
-  (:use [zookeeper]
+(ns org.clojars.pgdad.zookeeper.test.zookeeper-test
+  (:use [org.clojars.pgdad.zookeeper]
         [clojure.test])
   (:import [java.util UUID]))
 
